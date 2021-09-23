@@ -1,0 +1,130 @@
+﻿@model DotNetAppSqlDb.Models.Todo
+
+@{ ViewBag.Title = "Details"; }
+@{
+    Layout = "~/Views/Shared/U_Layout.cshtml";
+}
+@{var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity; }
+<h2>Details</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserBirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserBirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorGender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Blood_Group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_Group)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pola)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pola)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Storage_Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Storage_Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SUBJECTID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUBJECTID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RSUBJECTID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RSUBJECTID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.requst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.requst)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.rply)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rply)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+    </dl>
+</div>
+@if (userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value != null)
+{
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Request", "Requests", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p> }
+            else
+            {
+                <p>
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            }
+

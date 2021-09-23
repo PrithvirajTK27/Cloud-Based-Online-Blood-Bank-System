@@ -1,0 +1,67 @@
+﻿@model DotNetAppSqlDb.Models.Todo
+@{
+    Layout = "~/Views/Shared/U_Layout.cshtml";
+}
+@{ ViewBag.Title = "Filters"; }
+
+@{
+    var text1 = "Any";
+    var text2 = "Any";
+    var text3 = "Any";
+    var text4 = "Any";
+    var contxt = " ";
+    if (IsPost)
+    {
+        text1 = Request["text1"];
+        text2 = Request["text2"];
+        text3 = Request["text3"];
+        text4 = Request["text4"];
+        if (text1 == "")
+        { text1 = "Any"; }
+        if (text2 == "Select")
+        { text2 = "Any"; }
+        if(text3 == "Select")
+        { text3 = "Any"; }
+        contxt = "Show records from Storage " + text1 + " with Blood group " + text2 + " and Polarity " + text3 + " type "+ text4;
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <p>Enter atttributes to search and then click <strong>Prepare</strong>.</p>
+        <form action="" method="post">
+            <p>
+                <label for="text1">Storage Area :</label>
+                <input type="text" name="text1" />
+            </p>
+            <p>
+                <label for="text2">Blood Group :</label>
+                @Html.DropDownList("text2", new SelectList(Enum.GetValues(typeof(Groups))))
+            </p>
+            <p>
+                <label for="text3">Polarity :</label>
+                @Html.DropDownList("text3", new SelectList(Enum.GetValues(typeof(pol))))
+            </p>
+            <p>
+                <label for="text4">Type :</label>
+                @Html.DropDownList("text4", new SelectList(Enum.GetValues(typeof(typ))))
+            </p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Prepare" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+        <p>
+                @Html.ActionLink(contxt, "Search", new { ST = text1, BG = text2,PL = text3,TP = text4})
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DotNetAppSqlDb.Models.Todo>
+
+@{ ViewBag.Title = "Pending Requests"; }
+@{ Layout = "~/Views/Shared/U_Layout.cshtml"; }
+
+<h2>List of Donors</h2>
+<html>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonorGender)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Blood_Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pola)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserBirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Storage_Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonorGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blood_Group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pola)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserBirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Storage_Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.ActionLink("Reply", "Reply", new { id = item.ID })
+        </td>
+    </tr>
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Back to Home", "Home")
+    </p>
+</body>
+</html>

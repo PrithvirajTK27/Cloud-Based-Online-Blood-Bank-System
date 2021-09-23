@@ -1,0 +1,100 @@
+﻿@model DotNetAppSqlDb.Models.Todo
+
+@{ ViewBag.Title = "Delivery Confimation"; }
+@{ Layout = "~/Views/Shared/U_Layout.cshtml"; }
+<h2>Delivery</h2>
+
+<h3>Are you sure the blood was delivered?</h3>
+<h2>Note : Continuing will delete this from database</h2>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserBirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserBirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorGender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Blood_Group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blood_Group)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pola)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pola)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Storage_Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Storage_Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
+        AntiForgeryConfig.UniqueClaimTypeIdentifier = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Type;
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delivered" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Delivery")
+                </div>}
+</div>
